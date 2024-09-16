@@ -7,6 +7,12 @@ Project Overview
 
 Birthday Reminder allows you to keep track of birthdays by storing the name, date of birth, and phone numbers of people. The system also checks if today is someone’s birthday and sends an automated WhatsApp message via Python.
 
+Prerequisites
+
+	•	C++ compiler (e.g., g++)
+	•	Python 3 installed on your machine
+	•	The pywhatkit Python library for sending WhatsApp messages
+
 Features
 
 	•	Store birthdays: Easily add, delete, and view birthdays using a C++ interface.
@@ -26,4 +32,17 @@ Sending WhatsApp Messages:
 
   python send_whatsapp.py "Name" "+12345678901"
 
+
+If it does not run, you may try to change these lines in the addBirthday function
+        time_t now = time(0);
+        tm ltm;
+        localtime_s(&ltm, &now);
+        int currentYear = 1900 + ltm.tm_year;
+
+ You should add these lines instead : 
+        time_t now = time(0);
+        tm* ltm = localtime(&now);
+        int currentYear = 1900 + ltm->tm_year;
+
+ 
   Contributions are welcome! 
